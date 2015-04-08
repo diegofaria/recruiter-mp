@@ -1,7 +1,12 @@
 {% extends 'recruiter/base.html' %}
 
 {% block content %}
-    <h1>Candidate-se a uma vaga</h1>
+    <div class="panel panel-default">
+		<div class="panel-heading">Candidate-se a uma vaga</div>
+		<div class="panel-body">
+	    	Informe seus dados e avalie seu conhecimento nos itens abaixo, assinalando de 0 (não conheço) até 10 (domino a tecnologia):
+	  	</div>
+	</div>
     <form method="POST" class="candidate-form form-horizontal">{% csrf_token %}
         {{ form.as_p }}
         <button type="submit" class="save btn btn-default">Save</button>
