@@ -1,3 +1,5 @@
+from django.core.mail import send_mail
+
 class JobPositionSender(object):
 
 	def __init__(self, job_positions):
@@ -6,13 +8,30 @@ class JobPositionSender(object):
 	def send(self):
 		if len(self.job_positions) > 0:
 			if "front_end" in self.job_positions:
-				print("FRONT_END EMAIL")
+				self.send_front_end_email()
 			if "back_end" in self.job_positions:
-				print("BACK_END EMAIL")
+				self.send_front_end_email()
 			if "mobile" in self.job_positions:
-				print("MOBILE EMAIL")
+				self.send_mobile_email()
 		else:
 			self.send_generic_email()
+
+
+	def send_front_end_email(self):
+		send_mail('Obrigado por se candidatar', 'Obrigado por se candidatar, assim que tivermos uma vaga disponível para programador Front-End entraremos em contato.', 'contato@empresa.com',
+    ['diegofndefaria@gmail.com'], fail_silently=False)
+
+	def send_back_end_email(self):
+		send_mail('Obrigado por se candidatar', 'Obrigado por se candidatar, assim que tivermos uma vaga disponível para programador Back-End entraremos em contato.', 'contato@empresa.com',
+    ['diegofndefaria@gmail.com'], fail_silently=False)
+
+	def send_mobile_email(self):
+		send_mail('Obrigado por se candidatar', 'Obrigado por se candidatar, assim que tivermos uma vaga disponível para programador Mobile entraremos em contato.', 'contato@empresa.com',
+    ['diegofndefaria@gmail.com'], fail_silently=False)
+
+	def send_generic_email(self):
+		send_mail('Obrigado por se candidatar', 'Obrigado por se candidatar, assim que tivermos uma vaga disponível para programador entraremos em contato.', 'contato@empresa.com',
+    ['diegofndefaria@gmail.com'], fail_silently=False)
 
 class NewCandidateEngine(object):
 
