@@ -12,6 +12,10 @@ def candidate_detail(request, pk):
 	candidate = get_object_or_404(Candidate, pk=pk)
 	return render(request, 'recruiter/candidate_detail.html', {'candidate': candidate})
 
+def candidate_finish(request, pk):
+	candidate = get_object_or_404(Candidate, pk=pk)
+	return render(request, 'recruiter/candidate_finish.html', {'candidate': candidate})
+
 def candidate_new(request):
 	if request.method == "POST":
 		form = CandidateForm(request.POST)
@@ -19,7 +23,7 @@ def candidate_new(request):
 			candidate = form.save(commit=False)
 			new_candidate_engine = NewCandidateEngine()
 			candidate = new_candidate_engine.create(candidate)
-			return redirect('recruiter.views.candidate_detail', pk=candidate.pk)
+			return redirect('recruiter.views.candidate_finish', pk=candidate.pk)
 	else: 
 		form = CandidateForm()
 	return render(request,'recruiter/candidate_edit.html', {'form': form})   		
