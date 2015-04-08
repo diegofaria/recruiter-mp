@@ -68,3 +68,28 @@ class NewCandidateEngineTest(TestCase):
 		candidate = self.new_candidate_engine.create(self.candidate)
 		self.assertTrue(candidate.pk > 0)
 
+	def test_create_candidate_front_end(self):
+		self.candidate.html = 7
+		self.candidate.css = 7
+		self.candidate.javascript = 7
+		candidate = self.new_candidate_engine.create(self.candidate)
+		self.assertTrue(candidate.pk > 0)
+
+	def test_create_candidate_front_end(self):
+		self.candidate.html = 7
+		self.candidate.css = 7
+		self.candidate.javascript = 7
+		candidate = self.new_candidate_engine.create(self.candidate)
+		self.assertTrue(candidate.pk > 0)
+
+	def test_create_candidate_back_end(self):
+		self.candidate.python = 7
+		self.candidate.django = 7
+		candidate = self.new_candidate_engine.create(self.candidate)
+		self.assertTrue(candidate.pk > 0)
+
+	def test_create_candidate_mobile(self):
+		self.candidate.ios = 7
+		self.candidate.android = 7
+		candidate = self.new_candidate_engine.create(self.candidate)
+		self.assertTrue(candidate.pk > 0)
