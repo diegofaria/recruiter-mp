@@ -57,3 +57,14 @@ class NewCandidateEngineTest(TestCase):
 		self.assertTrue("back_end" in possible_positions)
 		self.assertTrue("front_end" in possible_positions)
 
+	def test_create_candidate_all_jobs(self):
+		self.candidate.html = 7
+		self.candidate.css = 7
+		self.candidate.javascript = 7
+		self.candidate.python = 7
+		self.candidate.django = 7
+		self.candidate.ios = 7
+		self.candidate.android = 7
+		candidate = self.new_candidate_engine.create(self.candidate)
+		self.assertTrue(candidate.pk > 0)
+

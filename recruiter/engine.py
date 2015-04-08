@@ -1,3 +1,19 @@
+class JobPositionSender(object):
+
+	def __init__(self, job_positions):
+		self.job_positions = job_positions
+
+	def send(self):
+		if len(self.job_positions) > 0:
+			if "front_end" in self.job_positions:
+				print("FRONT_END EMAIL")
+			if "back_end" in self.job_positions:
+				print("BACK_END EMAIL")
+			if "mobile" in self.job_positions:
+				print("MOBILE EMAIL")
+		else:
+			self.send_generic_email()
+
 class NewCandidateEngine(object):
 
 	def __init__(self):
@@ -20,3 +36,10 @@ class NewCandidateEngine(object):
 
 	def is_mobile_developer(self, candidate):
 		return (candidate.ios >= 7) and (candidate.android >= 7)
+
+	def create(self, candidate):
+		candidate.save()
+		job_positions = self.getJobPositions(candidate)
+		sender = JobPositionSender(job_positions)
+		sender.send()
+		return candidate
