@@ -53,3 +53,7 @@ class NewCandidateEngineTest(TestCase):
 		self.candidate.android = 7
 		possible_positions = self.new_candidate_engine.getJobPositions(self.candidate)
 		self.assertTrue(len(possible_positions) == 3)		
+		self.assertTrue("mobile" in possible_positions)
+		self.assertTrue("back_end" in possible_positions)
+		self.assertTrue("front_end" in possible_positions)
+
