@@ -42,3 +42,14 @@ class NewCandidateEngineTest(TestCase):
 		possible_positions = self.new_candidate_engine.getJobPositions(self.candidate)
 		self.assertTrue(len(possible_positions) > 0)
 		self.assertTrue("mobile" in possible_positions)
+
+	def test_new_candidate_engine_all_jobs(self):
+		self.candidate.html = 7
+		self.candidate.css = 7
+		self.candidate.javascript = 7
+		self.candidate.python = 7
+		self.candidate.django = 7
+		self.candidate.ios = 7
+		self.candidate.android = 7
+		possible_positions = self.new_candidate_engine.getJobPositions(self.candidate)
+		self.assertTrue(len(possible_positions) == 3)		
