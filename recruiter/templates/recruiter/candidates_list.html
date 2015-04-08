@@ -1,0 +1,14 @@
+{% extends 'recruiter/base.html' %}
+
+{% block content %}
+	{% for candidate in candidates %}
+		<div class="candidate">
+			<h3>
+				<a href="{% url 'recruiter.views.candidate_detail' pk=candidate.pk %}">
+					{{ candidate.name }}
+				</a>
+			</h3>
+			<p>apllied on {{ candidate.published_date }}</p>
+		</div>
+	{% endfor %}
+{% endblock content %}

@@ -2,8 +2,9 @@ from django.core.mail import send_mail
 
 class JobPositionSender(object):
 
-	def __init__(self, job_positions):
+	def __init__(self, job_positions, email):
 		self.job_positions = job_positions
+		self.email = email
 
 	def send(self):
 		if len(self.job_positions) > 0:
@@ -17,21 +18,21 @@ class JobPositionSender(object):
 			self.send_generic_email()
 
 
-	def send_front_end_email(self):
-		send_mail('Obrigado por se candidatar', 'Obrigado por se candidatar, assim que tivermos uma vaga disponível para programador Front-End entraremos em contato.', 'contato@empresa.com',
-    ['diegofndefaria@gmail.com'], fail_silently=False)
+	def send_front_end_email(self, email):
+		print("envia email")
+#		send_mail('Obrigado por se candidatar', 'Obrigado por se candidatar, assim que tivermos uma vaga disponível para programador Front-End entraremos em contato.', 'contato@empresa.com', [self.email], fail_silently=False)
 
 	def send_back_end_email(self):
-		send_mail('Obrigado por se candidatar', 'Obrigado por se candidatar, assim que tivermos uma vaga disponível para programador Back-End entraremos em contato.', 'contato@empresa.com',
-    ['diegofndefaria@gmail.com'], fail_silently=False)
+		print("envia email")
+#		send_mail('Obrigado por se candidatar', 'Obrigado por se candidatar, assim que tivermos uma vaga disponível para programador Back-End entraremos em contato.', 'contato@empresa.com', [self.email], fail_silently=False)
 
 	def send_mobile_email(self):
-		send_mail('Obrigado por se candidatar', 'Obrigado por se candidatar, assim que tivermos uma vaga disponível para programador Mobile entraremos em contato.', 'contato@empresa.com',
-    ['diegofndefaria@gmail.com'], fail_silently=False)
+		print("envia email")
+#		send_mail('Obrigado por se candidatar', 'Obrigado por se candidatar, assim que tivermos uma vaga disponível para programador Mobile entraremos em contato.', 'contato@empresa.com', [self.email], fail_silently=False)
 
 	def send_generic_email(self):
-		send_mail('Obrigado por se candidatar', 'Obrigado por se candidatar, assim que tivermos uma vaga disponível para programador entraremos em contato.', 'contato@empresa.com',
-    ['diegofndefaria@gmail.com'], fail_silently=False)
+		print("envia email")
+#		send_mail('Obrigado por se candidatar', 'Obrigado por se candidatar, assim que tivermos uma vaga disponível para programador entraremos em contato.', 'contato@empresa.com', [self.email], fail_silently=False)
 
 class NewCandidateEngine(object):
 
@@ -59,6 +60,6 @@ class NewCandidateEngine(object):
 	def create(self, candidate):
 		candidate.save()
 		job_positions = self.getJobPositions(candidate)
-		sender = JobPositionSender(job_positions)
+		sender = JobPositionSender(job_positions, candidate.email)
 		sender.send()
 		return candidate

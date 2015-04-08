@@ -1,0 +1,12 @@
+{% extends 'recruiter/base.html' %}
+
+{% block content %}
+    <div class="post">
+	    <a class="btn btn-default" href="{% url 'candidate_edit' pk=candidate.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+	    <h1>{{ candidate.name }}</h1>
+        <p>{{ candidate.email }}</p>
+        <div class="date">
+            {{ candidate.published_date }}
+        </div>
+    </div>
+{% endblock %}
