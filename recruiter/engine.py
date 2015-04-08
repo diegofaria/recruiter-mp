@@ -8,4 +8,6 @@ class NewCandidateEngine(object):
 			self.open_positions.append('front_end')
 		if (candidate.python >= 7) and (candidate.django >= 7):
 			self.open_positions.append('back_end')
+		if (candidate.ios >= 7) and (candidate.android >= 7):
+			self.open_positions.append('mobile')
 		return self.open_positions
