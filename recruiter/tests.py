@@ -27,15 +27,18 @@ class NewCandidateEngineTest(TestCase):
 		self.candidate.javascript = 7
 		possible_positions = self.new_candidate_engine.getJobPositions(self.candidate)
 		self.assertTrue(len(possible_positions) > 0)
+		self.assertTrue("front_end" in possible_positions)
 
 	def test_new_candidate_engine_back_end_job(self):
 		self.candidate.python = 7
 		self.candidate.django = 7
 		possible_positions = self.new_candidate_engine.getJobPositions(self.candidate)
 		self.assertTrue(len(possible_positions) > 0)
+		self.assertTrue("back_end" in possible_positions)
 
 	def test_new_candidate_engine_mobile_job(self):
 		self.candidate.ios = 7
 		self.candidate.android = 7
 		possible_positions = self.new_candidate_engine.getJobPositions(self.candidate)
 		self.assertTrue(len(possible_positions) > 0)
+		self.assertTrue("mobile" in possible_positions)
